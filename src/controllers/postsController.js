@@ -1,6 +1,7 @@
 const User = require("../models/User")
 const Post = require("../models/Post")
 const PostList = require("../models/PostList");
+const { get } = require("../routes/postRoutes");
 const list = new PostList()
 
 
@@ -34,6 +35,42 @@ const router = {
             res.status(404).json({message: 'Posts for this user not found', error});
         }
     },
+
+    getPostById: (req, res) => {
+        try {
+            const postId = req.params.id;
+            const post = list.getPostsById(postId);
+            res.json(post);
+        } catch (error) {
+            res.status(404).json({message: 'Post not found', error});
+        }
+    },
+
+    updatePostById: (req, res) => {
+        try {
+            const postId = req.params.id;
+            const updateData = req.body;
+            const post = list.getPostById(postId);
+            if (!post) {
+                throw new Error('Post not found');
+            }
+            const updatedPost = list.updatePostById(postId, updateData);
+            res.status(200).json(updatedPost);
+        } catch (error) {
+            res.status(404).json({message: 'Post not found', error});
+        }
+    },
+
+    deletePostById: (req, res) => {
+        try {
+            const postId = req.params.id;
+            list.deletePostById(postId);
+            res.json({message: 'Post deleted'});
+        } catch (error) {
+            res.status(404).json({message: 'Post not found', error});
+        }
+    }
+
 
 };
 
