@@ -1,11 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const usersController = require('../controllers/usersController');
+const userController = require("../controllers/userController");
 
-router.get("/users", usersController.getAllUsers);
-router.post("/users", usersController.createUser);
-router.delete("/users/:id", usersController.deleteUser);
-router.get("/users/:id", usersController.getUser);
-router.put("/users/:id", usersController.updateUser);
+router.get("/users", userController.getAllUsers);
+router.post("/users", userController.createUser);
+router.delete("/users/:id", userController.deleteUser);
+router.get("/users/:id", userController.getUser);
+router.put("/users/:id", userController.updateUser);
 
 module.exports = router;
