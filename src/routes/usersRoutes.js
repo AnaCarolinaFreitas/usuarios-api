@@ -52,7 +52,7 @@ router.get("/users", userController.getAllUsers);
  *       201:
  *         description: usuário criado
  */
-router.post("/users", userController.createUser);
+router.post("/users",upload.single("image"), userController.createUser);
 
 /**
  * @swagger
