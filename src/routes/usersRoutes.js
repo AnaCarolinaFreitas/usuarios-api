@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
-const upload = require("./../config/upload.js");
-
+const upload = require("../config/upload.js"); // crie a pasta middleware e o arquivo upload.js
 /**
  * @swagger
  * tags:
@@ -52,7 +51,7 @@ router.get("/users", userController.getAllUsers);
  *       201:
  *         description: usuário criado
  */
-router.post("/users",upload.single("image"), userController.createUser);
+router.post("/users", upload.single("image"), userController.createUser);
 
 /**
  * @swagger
