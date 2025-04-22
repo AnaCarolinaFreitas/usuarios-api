@@ -6,7 +6,8 @@ CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    age INTEGER NOT NULL
+    age INTEGER NOT NULL,
+    image TEXT
 );
 
 CREATE TABLE posts (
@@ -17,10 +18,10 @@ CREATE TABLE posts (
     localization VARCHAR(255)
 );
 
-INSERT INTO users (name, email, age) VALUES 
-('Laura Violla', 'laura.violla@gmail.com', 17),
-('Evelyn Oliveira', 'evelyn.oliveira@gmail.com', 17),
-('Ana Carolina Freitas', 'anacarolina.freitas@gmail.com', 16);
+INSERT INTO users (name, email, age, image) VALUES 
+('Laura Violla', 'laura.violla@gmail.com', 17, 'https://avatars.githubusercontent.com/u/158209993?v=4'),
+('Evelyn Oliveira', 'evelyn.oliveira@gmail.com', 17, 'https://avatars.githubusercontent.com/u/145203060?v=4'),
+('Ana Carolina Freitas', 'anacarolina.freitas@gmail.com', 16, 'https://avatars.githubusercontent.com/u/158210617?v=4');
 
 INSERT INTO posts (user_id, description, add_person, localization) VALUES
 (1, 'tulipas', '@tulips', 'Valinhos-SP'),

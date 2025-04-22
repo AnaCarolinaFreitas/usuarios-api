@@ -23,8 +23,8 @@ const getPost = async (req, res) => {
 
 const createPost = async (req, res) => {
     try {
-        const { user_id, image, description, add_person, localization } = req.body;
-        const newPost = await postModel.createPost(user_id, image, description, add_person, localization);
+        const { user_id, description, add_person, localization } = req.body;
+        const newPost = await postModel.createPost(user_id, description, add_person, localization);
         res.status(201).json(newPost);
     } catch (error) {
         res.status(500).json({ message: "Error creating post" });
